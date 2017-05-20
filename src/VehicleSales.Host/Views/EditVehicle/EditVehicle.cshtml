@@ -1,0 +1,121 @@
+﻿@using VehicleSales.Contracts
+@model Vehicle
+
+<div class="col-md-2 col-md-offset-5 vehicle-content">
+    <div class="col-md-3">
+        <h5>Make</h5>
+    </div>
+    <div class="col-md-9">
+        <input type="text" class="form-control" id="make" value="@Model.Make" />
+    </div>
+    <div class="col-md-3">
+        <h5>Model</h5>
+    </div>
+    <div class="col-md-9">
+        <input type="text" class="form-control" id="model" value="@Model.Model"/>
+    </div>
+    <div class="col-md-3">
+        <h5>Engine</h5>
+    </div>
+    <div class="col-md-9">
+        <input type="text" class="form-control" id="engine" value="@Model.Engine"/>
+    </div>
+    <div class="col-md-3">
+        <h5>Wheels</h5>
+    </div>
+    <div class="col-md-9">
+        <input type="number" class="form-control" min="0" id="wheels" value="@Model.Wheels"/>
+    </div>
+    @if (Model is Car)
+    {
+        <div class="col-md-3">
+            <h5>Door</h5>
+        </div>
+        <div class="col-md-9">
+            <input type="number" class="form-control" min="0" id="doors" value="@(((Car)Model).Doors)" />
+        </div>
+        <div class="col-md-3">
+            <h5>Type</h5>
+        </div>
+        <div class="col-md-9">
+            <select class="form-control"  id="car-type" value="@(((Car)Model).CarType)">
+                <option>Hatchback</option>
+                <option>Sedan</option>
+            </select>
+        </div>
+        <div class="col-md-2 col-md-offset-4">
+            <input type="button" class="btn btn-primary btn-create" value="Update" id="update-car" />
+        </div>
+    }
+    else
+    {
+        <div class="col-md-3">
+            <h5>Type</h5>
+        </div>
+        <div class="col-md-9">
+            <select class="form-control" id="bike-type" value="@(((Bike)Model).BikeType)">
+                <option>Road</option>
+                <option>OffRoad</option>
+            </select>
+        </div>
+        <div class="col-md-2 col-md-offset-4">
+            <input type="button" class="btn btn-primary btn-create" value="Update" id="update-bike" />
+        </div>
+    }
+</div>
+
+<div class="col-md-2 col-md-offset-5">
+    <div class="alert alert-success create-alert" id="alert">
+        Updated
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#update-bike').click(function () {
+
+            var bike = {
+                Id: "@(Model.Id)",
+                Make: $('#make').val(),
+                Model: $('#model').val(),
+                Engine: $('#engine').val(),
+                Wheels: $('#wheels').val(),
+                BikeType: $('#bike-type').val()
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: '/api/vehicle/UpdateBike',
+                data: bike,
+                success: function () {
+                    $('#alert').fadeIn("fast");
+                }
+            });
+        });
+
+        $('#update-car').click(function () {
+
+            var car = {
+                Id: "@(Model.Id)",
+                Make: $('#make').val(),
+                Model: $('#model').val(),
+                Engine: $('#engine').val(),
+                Wheels: $('#wheels').val(),
+                Doors: $('#doors').val(),
+                CarType: $('#car-type').val()
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: '/api/vehicle/UpdateCar',
+                data: car,
+                success: function () {
+                    $('#alert').fadeIn("fast");
+                }
+            });
+        })
+
+    });
+</script>
+

@@ -1,0 +1,78 @@
+﻿<div class="col-md-2 col-md-offset-5 vehicle-content">
+    <div class="col-md-3">
+        <h5>Make</h5>
+    </div>
+    <div class="col-md-9">
+        <input type="text" class="form-control" id="make" />
+    </div>
+    <div class="col-md-3">
+        <h5>Model</h5>
+    </div>
+    <div class="col-md-9">
+        <input type="text" class="form-control" id="model" />
+    </div>
+    <div class="col-md-3">
+        <h5>Engine</h5>
+    </div>
+    <div class="col-md-9">
+        <input type="text" class="form-control" id="engine" />
+    </div>
+    <div class="col-md-3">
+        <h5>Wheels</h5>
+    </div>
+    <div class="col-md-9">
+        <input type="number" class="form-control" min="0" id="wheels" />
+    </div>
+    <div class="col-md-3">
+        <h5>Doors</h5>
+    </div>
+    <div class="col-md-9">
+        <input type="number" class="form-control" min="0" id="doors" />
+    </div>
+    <div class="col-md-3">
+        <h5>Type</h5>
+    </div>
+    <div class="col-md-9">
+        <select class="form-control" id="type">
+            <option>Hatchback</option>
+            <option>Sedan</option>
+        </select>
+    </div>
+
+    <div class="col-md-2 col-md-offset-4">
+        <input type="button" class="btn btn-primary btn-create" value="Create"  id="create"/>
+    </div>
+</div>
+<div class="col-md-2 col-md-offset-5">
+    <div class="alert alert-success create-alert" id="alert">
+             Added a new car to memory.
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#create').click(function () {
+
+            var car = {
+                Make: $('#make').val(),
+                Model: $('#model').val(),
+                Engine: $('#engine').val(),
+                Wheels: $('#wheels').val(),
+                Doors: $('#doors').val(),
+                CarType: $('#type').val()
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: '/api/Vehicle/AddCar',
+                data: car,
+                success: function () {
+                    $('#alert').fadeIn("fast");
+                }
+            });
+        })
+
+    });
+</script>
+

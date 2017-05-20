@@ -1,0 +1,69 @@
+﻿@using VehicleSales.Contracts;
+@model ICollection<Vehicle>
+
+<div class="col-md-6 col-md-offset-3 container">
+    @foreach (var v in Model)
+    {
+        <div class="vehicle-content">
+            <div class="row">
+                <div class="col-md-3">
+                    <h5>Make:</h5>
+                    <span>@v.Make</span>
+                </div>
+                <div class="col-md-3">
+                    <h5>Model:</h5>
+                    <span>@v.Model</span>
+                </div>
+                <div class="col-md-3">
+                    <h5>Engine:</h5>
+                    <span>@v.Engine</span>
+                </div>
+                <div class="col-md-3">
+                    <h5>Wheels:</h5>
+                    <span>@v.Wheels </span>
+                </div>
+            </div>
+            @if (v.GetType().Equals(typeof(Car)))
+            {
+                <div class="row">
+                    <div class="col-md-3">
+                        <h5>Doors:</h5>
+                        <span>@(((Car)v).Doors)</span>
+                    </div>
+                    <div class="col-md-3">
+                        <h5>Type:</h5>
+                        <span>@(((Car)v).CarType)</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 col-md-offset-8">
+                        @Html.ActionLink("Add Car", "NewCar", "NewVehicle", null, new {@class = "btn btn-success"})
+                    </div>
+                    <div class="col-md-1">
+                        @Html.ActionLink("Edit Car", "Index", "EditVehicle", new { id = v.Id }, new { @class = "btn btn-success" })
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="row">
+                    <div class="col-md-3">
+                        <h5>Type:</h5>
+                        <span>@(((Bike)v).BikeType)</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 col-md-offset-8">
+                        @Html.ActionLink("Add Bike", "NewBike", "NewVehicle", null, new { @class = "btn btn-primary" })
+                    </div>
+                    <div class="col-md-1">
+                        @Html.ActionLink("Edit Bike", "Index", "EditVehicle", new { id = v.Id }, new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            }
+
+        </div>
+    }
+</div>
+<div class="col-md-3">
+</div>
