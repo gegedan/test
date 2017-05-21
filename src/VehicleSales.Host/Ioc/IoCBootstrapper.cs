@@ -1,11 +1,12 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using System.Web.Http;
 using System.Reflection;
 using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
 using VehicleSales.Data;
-using VehicleSales.Contracts;
+using Serilog;
 
 namespace VehicleSales.Host.Ioc
 {
@@ -14,6 +15,9 @@ namespace VehicleSales.Host.Ioc
         public static void Init()
         {
             var builder = new ContainerBuilder();
+
+            builder.Register(c => new LoggerConfiguration().WriteTo.RollingFile($@"{AppDomain.CurrentDomain.BaseDirectory}\logs\log.txt").CreateLogger())
+                .As<ILogger>().SingleInstance(); ;
 
             builder.RegisterType<VehicleRepository>()
                 .As<IVehicleRepository>()

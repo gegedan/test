@@ -74,3 +74,4 @@ _[Ss]cripts
 *.ncrunchsolution
 *.dot[Cc]over
 src/.vs/config/applicationhost.config
+src/VehicleSales.Host/logs/log-20170521.txt
