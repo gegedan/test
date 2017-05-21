@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleSales.Contracts", "V
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleSales.Data", "VehicleSales.Data\VehicleSales.Data.csproj", "{7FF40D3D-BF05-40A4-B527-FC9165DD1E16}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{BDE7F14D-9126-4524-A09D-2F9119094980}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleSales.Test.Unit", "VehicleSales.Test.Unit\VehicleSales.Test.Unit.csproj", "{6B2A03FA-821F-47D3-A63F-2547C793C6D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,8 +31,15 @@ Global
 		{7FF40D3D-BF05-40A4-B527-FC9165DD1E16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FF40D3D-BF05-40A4-B527-FC9165DD1E16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FF40D3D-BF05-40A4-B527-FC9165DD1E16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B2A03FA-821F-47D3-A63F-2547C793C6D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B2A03FA-821F-47D3-A63F-2547C793C6D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B2A03FA-821F-47D3-A63F-2547C793C6D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B2A03FA-821F-47D3-A63F-2547C793C6D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6B2A03FA-821F-47D3-A63F-2547C793C6D0} = {BDE7F14D-9126-4524-A09D-2F9119094980}
 	EndGlobalSection
 EndGlobal
